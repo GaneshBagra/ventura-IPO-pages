@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter basename='/'>
       <Routes>
         <Route path='/' element={<ListIpoPage/>} />
-        <Route path='/IpoDetails/:companyName' element={<IpoDetailsPage/>} />
+        <Route path='/IpoDetails/:companyId' element={<IpoDetailsPage/>} />
       </Routes>
     </BrowserRouter>
   )

@@ -1,6 +1,224 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap');
 
-
 *{
-    font-family: "Sora";
+  font-family: "Sora", sans-serif;
+  box-sizing: border-box;
+}
+
+/* -------------------- GLOBAL / DESKTOP (default) -------------------- */
+/* Header / buttons */
+.btn.back-button{
+  border: 1px solid gray;
+  border-radius: 9px;
+}
+
+
+/* Containers */
+.box-container{
+  padding: 0 1rem;
+  margin: 1.5rem 1rem;
+  border: 2px solid lightgray;
+  border-radius: 12px;
+}
+
+/* IPO card */
+.ipo-card { background: transparent; }
+.ipo-title {
+  color: #14142b;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.ipo-inner {
+  border: 2px solid rgb(150, 150, 150);
+  background: #ffffff;
+  box-shadow: none;
+  border-radius: 12px;
+  padding: 18px;
+}
+.ipo-item { padding-bottom: 0.6rem; }
+.ipo-label { color: #6b7280; letter-spacing: 0.1px; margin-bottom: 0.25rem; }
+.ipo-value { color: #0b1130; font-size: 0.95rem; }
+.fw-semibold { font-weight: 600; }
+.ipo-sub { margin-top: 0.15rem; }
+
+/* Timeline - horizontal by default (md and up) */
+.timeline-card {
+  border: 1px solid #eef0f6;
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+}
+.timeline-title {
+  font-weight: 700;
+  color: #23243a;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+/* Horizontal timeline */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+.timeline-item {
+  flex: 1 1 0;
+  position: relative;
+  padding: 0 10px;
+  margin-left: -26px;
+}
+.timeline-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #e9eaf2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+.timeline-item.completed .timeline-dot { background: #1fae60; }
+
+/* horizontal connector */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 14%;
+  right: -45%;
+  height: 2px;
+  width: 100%;
+  background: #e9eaf2;
+  z-index: 0;
+}
+.timeline-item.completed::after { background: #1fae60; }
+.timeline-item.last::after { display: none; }
+
+.timeline-text { max-width: 90px; }
+.timeline-title-item { color: #23243a; font-size: 0.95rem; }
+.timeline-date { color: #6b6f86; }
+
+/* ---------- VERTICAL TIMELINE (will be enabled on small screens) ---------- */
+/* base vertical styles (kept but hidden on desktop via display control below) */
+.timeline-vertical {
+  position: relative;
+  padding-left: 10px;
+  display: none; /* shown on mobile via media query */
+}
+/* full-height vertical center line for the container (touches all dots) */
+.timeline-vertical-item::before {
+  content: "";
+  position: absolute;
+  left: 5.5%;   
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: #e9eaf2;
+  z-index: 0;
+}
+.timeline-vertical-item.completed::before { background: #1fae60; }
+.timeline-vertical-item.last::before { display: none; }
+
+
+/* per item wrapper (dots + body) */
+.timeline-vertical-item {
+  position: relative;
+  padding: 10px 0;
+  
+  margin-top: -12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  z-index: 2;
+}
+.timeline-vertical-left {
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  
+}
+.timeline-dot-vertical {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e9eaf2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+}
+.timeline-dot-vertical.completed { background: #1fae60; }
+.timeline-vertical-body { padding-bottom: 6px; }
+
+/* ensure svg icons render above the line */
+.timeline-dot svg, .timeline-dot-vertical svg { display: block; }
+
+/* -------------------- TABLET (min-width:426px and max-width:768px) -------------------- */
+@media (min-width: 426px) and (max-width: 768px) {
+  /* keep layout similar to desktop but slightly tighter */
+  .box-container {
+    padding: 0 0.75rem;
+    margin: 1.25rem 0.5rem;
+  }
+  .ipo-inner { padding: 14px; }
+  .timeline-card { padding: 14px; }
+  .timeline-text { max-width: 90px; }
+  .timeline-item::after { width: calc(100% - 60px); right: -13%; top: 11%; }
+  .timeline-title { font-size: 0.95rem; }
+
+  /* keep horizontal timeline visible on tablets */
+  .timeline-vertical { display: block; }
+.timeline { display: none !important; }
+  /* vertical line position adjustments for narrow screens */
+  .timeline-vertical-item::before { left: 19.5px; top: 10px; bottom: 0px; }
+  .timeline-vertical-item { margin-top: -6px; padding: 8px 0; }
+  .timeline-vertical-left { width: 40px; }
+  .timeline-dot-vertical { width: 26px; height: 26px; }
+  
+
+  /* reduce dot sizes slightly if needed */
+  .timeline-dot { width: 30px; height: 30px; }
+}
+
+/* -------------------- MOBILE (max-width:425px) -------------------- */
+@media (max-width: 425px) {
+  /* hide header buttons on small phones */
+  .btn.back-button, .btn.donwload-btn, .btn.apply-button {
+    display: none !important;
+  }
+
+  /* container adjustments */
+  .box-container{
+    border: none;
+    margin: 1.5rem 0rem;
+    padding: 0;
+  }
+  .ipo-inner { padding: 12px; }
+  .company-card, .timeline-card { padding: 12px; }
+
+  /* show vertical timeline and hide horizontal */
+  .timeline { display: none !important; }
+  .timeline-vertical { display: block; }
+
+  /* vertical line position adjustments for narrow screens */
+  .timeline-vertical::before { left: 20px; top: 6px; bottom: 6px; }
+  .timeline-vertical-item { margin-top: -6px; padding: 8px 0; }
+  .timeline-vertical-left { width: 40px; }
+  .timeline-dot-vertical { width: 26px; height: 26px; }
+
+  /* text sizing */
+  .timeline-title-item { font-size: 0.95rem; }
+  .timeline-date { font-size: 0.85rem; }
+
+  /* small typography tweaks */
+  .company-paragraph { font-size: 0.92rem; color: #6b6f86; }
+}
+
+/* small tweaks for very large screens */
+@media (min-width: 1200px) {
+  .timeline-text { max-width: 90px; }
+  .ipo-inner { padding: 20px; }
 }

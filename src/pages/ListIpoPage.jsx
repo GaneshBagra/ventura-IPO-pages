@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { ipoData } from "../utils/data.js";
 
 const ListIpoPage = () => {
+  const navigate = useNavigate()
   return (
     <main className=" p-2" role="main" aria-label="IPO list">
       <table
@@ -49,7 +51,7 @@ const ListIpoPage = () => {
 
         <tbody>
           {ipoData.map((item) => (
-            <tr role="row" className="border" key={item.id}>
+            <tr role="row" className="border" key={item.id} style={{cursor:"pointer"}} onClick={() => navigate(`/IpoDetails/${item.id}`)}>
               <td
                 role="cell"
                 className="p-3 "
