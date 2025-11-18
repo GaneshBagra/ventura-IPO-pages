@@ -31,7 +31,7 @@ Lorem ipsum dolor sit amet. Ea reprehenderit quia cum consequuntur deleniti rem 
         <h6 className="company-heading d-none d-md-block fw-bold">About the company</h6>
 
         {/* Mobile heading (replaces "About the company" with the company name) */}
-        <h6 className="company-heading d-md-none">{companyName}</h6>
+        <h6 className="company-heading d-md-none fw-bold">{companyName}</h6>
 
         <div className="company-content mt-2">
           {/* Desktop: always show full paragraphs */}

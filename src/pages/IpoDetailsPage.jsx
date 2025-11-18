@@ -44,7 +44,7 @@ const IpoDetailsPage = () => {
             <div className="meta d-flex flex-column">
               <span className="name fw-bold">{companyData.companyName}</span>
               <span className="date text-muted" style={{ fontSize: "0.8rem" }}>
-                JIO Private Limited
+                {companyData.companyFullName}
               </span>
             </div>
           </div>
@@ -72,7 +72,7 @@ const IpoDetailsPage = () => {
 
     <div className="box-container">
                 
-        <CompanyDetails about="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis rem cumque laboriosam non autem corrupti numquam repudiandae error excepturi magnam ullam cum nemo culpa, natus tempore! Aliquam unde nesciunt distinctio."/>
+        <CompanyDetails companyName={companyData.companyFullName} about="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis rem cumque laboriosam non autem corrupti numquam repudiandae error excepturi magnam ullam cum nemo culpa, natus tempore! Aliquam unde nesciunt distinctio."/>
     </div>
 
     
